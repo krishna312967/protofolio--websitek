@@ -1,531 +1,428 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krishna Biswakarma | Professional Portfolio</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        :root {
-            --primary-color: #6c63ff;
-            --secondary-color: #4d44db;
-            --dark-color: #2f2e41;
-            --light-color: #f8f9fa;
-            --accent-color: #ff6584;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark-color);
-            overflow-x: hidden;
-        }
-        
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-color) !important;
-        }
-        
-        .nav-link {
-            color: var(--dark-color);
-            font-weight: 500;
-            margin: 0 10px;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary-color);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .hero-section {
-            background: linear-gradient(135deg, #f5f7fa 0%, #a50e84 100%);
-            padding: 100px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-img {
-            width: 300px;
-            height: 300px;
-            border-radius: 20px;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: all 0.5s ease;
-        }
-        
-        .hero-img:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-        
-        .title {
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 20px;
-        }
-        
-        .title span {
-            color: var(--primary-color);
-        }
-        
-        .subtitle {
-            color: #6c757d;
-            margin-bottom: 30px;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
-        }
-        
-        .section {
-            padding: 80px 0;
-            
-        }
-        
-        .section-title {
-            font-weight: 700;
-            margin-bottom: 50px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background-color: var(--primary-color);
-            bottom: -10px;
-            left: 0;
-        }
-        
-        .skill-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-icon {
-            font-size: 40px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        
-        .progress {
-            height: 8px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .progress-bar {
-            background-color: var(--primary-color);
-        }
-        
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .bg-accent {
-            background-color: var(--accent-color);
-        }
-        
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 30px 0;
-        }
-        
-        .social-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            margin: 0 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-        .profile-pic {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #fff;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-          }
-    </style>
-</head>
-<body data-bs-spy="scroll" data-bs-target=".navbar">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Krishna Biswakarma</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
+    <title>Krishna Biswakarma | Portfolio</title>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet">
+
+    <!-- Animate.css & AOS -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet">
+
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+    :root {
+      --bg-color: #0a0a0c;
+      --text-color: #fff;
+      --card-bg: #16161a;
+      --accent: #00d9ff;
+    }
+
+    body.light-mode {
+      --bg-color: #f9f9f9;
+      --text-color: #111;
+      --card-bg: #fff;
+      --accent: #007bff;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    nav.navbar {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    nav.navbar.scrolled {
+      background: rgba(10,10,10,0.95);
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background: radial-gradient(circle at top left, #0a84ff33, var(--bg-color) 70%);
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid var(--accent);
+      box-shadow: 0 0 25px var(--accent);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      margin-top: 20px;
+    }
+
+    .typed-text {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .btn-glow {
+      background: linear-gradient(90deg, var(--accent), #00ffa3);
+      color: #000;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: 0.3s;
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px #00ffa3;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 60px;
+      font-weight: 600;
+      font-size: 2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      display: block;
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    .card-custom {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      transition: 0.4s;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(0,217,255,0.3);
+    }
+
+    .project img {
+      border-radius: 15px;
+      transition: 0.4s;
+    }
+
+    .project:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,217,255,0.4);
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 30px 0;
+      color: #aaa;
+    }
+     /* Resume Section */
+    .resume-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,217,255,0.3);
+    }
+
+    .resume-container iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+  </style>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-info" href="#">Krishna-<span
+            class="text-light">Biswakarma</span></a>
+        <button class="navbar-toggler" data-bs-toggle="collapse"
+          data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navMenu"
+          class="collapse navbar-collapse justify-content-end align-items-center">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#about"
+                class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#education"
+                class="nav-link">Education</a></li>
+            <li class="nav-item"><a href="#skills"
+                class="nav-link">Skills</a></li>
+            <li class="nav-item"><a href="#projects"
+                class="nav-link">Projects</a></li>
+            <li class="nav-item"><a href="#contact"
+                class="nav-link">Contact</a></li>
+          </ul>
+          <button id="themeToggle" class="toggle-btn ms-3"><i
+              class="bi bi-moon-stars"></i></button>
         </div>
+      </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content animate__animated animate__fadeInLeft">
-                    <h6 class="text-muted">Hello, I'm</h6>
-                    <h1 class="title">Krishna <span>Biswakarma</span></h1>
-                    <h4 class="subtitle">Web Developer & Designer</h4>
-                    <p class="mb-4">I create beautiful, functional websites that help businesses grow and succeed in the digital world.</p>
-                    <a href="#contact" class="btn btn-primary me-3">Hire Me</a>
-                    
-                </div>
-                <div class="col-lg-6 text-center animate__animated animate__fadeInRight">
-                    <img src="1.jpg" alt="Krishna Biswakarma" class="hero-img floating profile-pic">
-                </div>
-            </div>
-        </div>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <img src="krishna.png" alt="Krishna Biswakarma">
+      <h1>Hi, I'm <span>Krishna Biswakarma</span></h1>
+      <p><span class="typed-text"></span></p>
+      <a href="#about" class="btn btn-glow mt-3">Explore More</a>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <img src="1.jpg" alt="About Krishna" class="img-fluid rounded shadow animate__animated animate__fadeInLeft">
-                </div>
-                <div class="col-lg-6 animate__animated animate__fadeInRight">
-                    <h2 class="section-title">About <span>Me</span></h2>
-                    <p>I'm Krishna Biswakarma, a passionate and curious Information Technology student currently pursuing my Bachelor of Engineering (BE)..</p>
-                    <p>I specialize in blending technology with creativity, from building functional web applications to crafting engaging UI/UX designs and digital content..</p>
-                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities.</p>
-                    <p>I’m deeply interested in areas like</p>
-                    <p><ul>
-                        <li>Web Development (Frontend & Backend)</li>
-                        <li>Mobile App Development with Flutter</li>
-                        <li>User Interface (UI) & User Experience (UX) Design</li>
-                        <li>Graphics Design & Branding</li>
-                        <li>Content Creation & Social Media Strategy</li>
-                        
-                    </ul></p>
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><strong>Name:</strong> Krishna Biswakarma</li>
-                                <li class="mb-2"><strong>Email:</strong> krishnabk153@gmail.com</li>
-                                <li class="mb-2"><strong>Phone:</strong> +977 9808712312</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><strong>From:</strong> Nepal</li>
-                                <li class="mb-2"><strong>Freelance:</strong> Available</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- About -->
+    <section id="about" class="py-5">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title">About Me</h2>
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center">
+            <img src="krishna.png"
+              class="rounded-circle border border-info shadow-lg" width="250"
+              alt>
+          </div>
+          <div class="col-md-6">
+            <p>Hello! I’m <strong>Krishna Biswakarma</strong>, currently
+              pursuing a BE in Information Technology.
+              I specialize in building modern, interactive, and responsive
+              websites using <strong>HTML, CSS, JS, Bootstrap, and
+                Flutter</strong>.
+              I aim to create designs that are not just beautiful, but
+              meaningful and effective.</p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="section-title">My <span>Skills</span></h2>
-                    <p class="mb-5">I've worked with a variety of technologies in the web development world. Here are some of my core skills:</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <!-- Skill Card 1 -->
-                <div class="col-md-4 animate__animated animate__fadeInUp" data-wow-delay="0.1s">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-html5"></i>
-                        </div>
-                        <h4>HTML</h4>
-                        <p>Semantic markup, accessibility standards, and modern HTML5 features.</p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Skill Card 2 -->
-                <div class="col-md-4 animate__animated animate__fadeInUp" data-wow-delay="0.2s">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-                        <h4>CSS</h4>
-                        <p>Responsive design, animations, Flexbox, Grid, and preprocessors like SASS.</p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Skill Card 3 -->
-                <div class="col-md-4 animate__animated animate__fadeInUp" data-wow-delay="0.3s">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-js"></i>
-                        </div>
-                        <h4>JavaScript</h4>
-                        <p>ES6+, DOM manipulation, async programming, and modern frameworks.</p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Skill Card 4 -->
-                <div class="col-md-4 animate__animated animate__fadeInUp" data-wow-delay="0.4s">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-bootstrap"></i>
-                        </div>
-                        <h4>Bootstrap</h4>
-                        <p>Building responsive, mobile-first websites with Bootstrap 5.</p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                <!-- Skill Card 6 -->
-                <div class="col-md-4 animate__animated animate__fadeInUp" data-wow-delay="0.6s">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h4>Backend</h4>
-                        <p>Php, laravel, and RESTful API development.</p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-                 <!-- Skill Card 6 -->
-                 <div class="col-md-4 animate__animated animate__fadeInUp" data-wow-delay="0.6s">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <!-- <i class="fas fa-database"></i> -->
-                        </div>
-                        <h4>Graphis Design</h4>
-                        <p>I specialize in creating clean, modern, and impactful visuals that convey messages clearly. My design work includes:
-
-                            Social media posts & promotional banners
-                            
-                            Posters, flyers, and branding materials
-                            
-                            Logo design and visual identity creation
-                            
-                            Video thumbnails, intros, and content layouts
-                            
-                            Tools I use: Adobe Photoshop, Illustrator, Canva, Figma</p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Resume Section -->
+    <section id="resume" class="py-5 bg-dark">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title">My Resume</h2>
+        <div class="resume-container mb-4 animate__animated animate__fadeInUp">
+          <iframe src="cv.pdf"></iframe>
         </div>
+        <div class="text-center">
+          <a href="cv.pdf" target="_blank" class="btn btn-glow">
+            <i class="bi bi-download"></i> Download Resume
+          </a>
+        </div>
+      </div>
     </section>
 
-    
-    <!-- Contact Section -->
-    <section id="contact" class="section bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h2 class="section-title">Get In <span>Touch</span></h2>
-                    <p class="mb-5">Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
-                </div>
+    <!-- Education -->
+    <section id="education" class="py-5 bg-dark">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title">Education</h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-right">
+            <div class="card-custom h-100">
+              <i class="bi bi-mortarboard-fill text-info fs-2 mb-3"></i>
+              <h5>Bachelor in Information Technology</h5>
+              <p>Pokhara University — Ongoing (BE IT)</p>
             </div>
-            <div class="row">
-                <div class="col-lg-6 animate__animated animate__fadeInLeft">
-                    <div class="mb-4">
-                        <h4 class="mb-3">Contact Information</h4>
-                        <p><i class="fas fa-map-marker-alt me-2"></i> Kathmandu, Nepal</p>
-                        <p><i class="fas fa-envelope me-2"></i> krishnabk153@gmail.com.</p>
-                        <p><i class="fas fa-phone me-2"></i><ul>
-                            <li>9808712312</li>
-                            <li>9869251402</li>
-                        </ul></p>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 animate__animated animate__fadeInRight">
-                    <form>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Subject">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+          </div>
+          <div class="col-md-4" data-aos="zoom-in">
+            <div class="card-custom h-100">
+              <i class="bi bi-book-half text-info fs-2 mb-3"></i>
+              <h5>+2 Science</h5>
+              <p>Liverpool intenational college kathmandu — Completed</p>
             </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-left">
+            <div class="card-custom h-100">
+              <i class="bi bi-pencil-fill text-info fs-2 mb-3"></i>
+              <h5>SEE</h5>
+              <p>Public aims boarding school lahan -3 — Excellent Academic
+                Record</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-5">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title">My Skills</h2>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-right">
+            <div class="card-custom">
+              <i class="bi bi-laptop text-info fs-1 mb-3"></i>
+              <h5>Web Development</h5>
+              <p>HTML • CSS • JS • Bootstrap • PHP</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="zoom-in">
+            <div class="card-custom">
+              <i class="bi bi-phone text-info fs-1 mb-3"></i>
+              <h5>App Development</h5>
+              <p>Flutter • Firebase • REST APIs</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-left">
+            <div class="card-custom">
+              <i class="bi bi-brush text-info fs-1 mb-3"></i>
+              <h5>UI/UX Design</h5>
+              <p>Figma • Adobe XD • Responsive Design</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-5 bg-dark">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title">Projects</h2>
+        <div class="row g-4">
+          <div class="col-md-6 project" data-aos="fade-right">
+            <img src="https://via.placeholder.com/600x350" class="w-100 mb-3"
+              alt>
+            <h5>AAFNO STORAGE</h5>
+            <p>Hostel storage system with admin dashboard, booking system, and
+              payment integration.</p>
+          </div>
+          <div class="col-md-6 project" data-aos="fade-left">
+            <img src="https://via.placeholder.com/600x350" class="w-100 mb-3"
+              alt>
+            <h5>ClipCraze</h5>
+            <p>A platform to share clips, music, and vlogs — connected with
+              Facebook updates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-5 text-center">
+      <div class="container" data-aos="zoom-in">
+        <h2 class="section-title">Contact Me</h2>
+        <p>Let's collaborate or discuss projects!</p>
+        <button class="btn btn-glow mt-3" data-bs-toggle="modal"
+          data-bs-target="#contactModal">
+          <i class="bi bi-chat-dots"></i> Message Me
+        </button>
+      </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div
+          class="modal-content bg-dark text-light animate__animated animate__zoomIn">
+          <div class="modal-header border-secondary">
+            <h5 class="modal-title text-info"></h5>
+            <button class="btn-close btn-close-white"
+              data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+
+              <div class="mb-3">
+                <p> Gmail:-krishna.211519@ncit.edu.np</p><br>
+                <p>contact:9808712312</p>
+              </div>
+
+              <button type="submit" class="btn btn-glow w-100"><a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=krishnabk153@gmail.com&su=Collaboration Request&body=Hi Krishna,"
+                  class="btn btn-glow w-100"
+                  target="_blank">
+                  GMAIL ME FROM HERE
+                </a></button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="text-center">
-        <div class="container">
-            <p class="mb-2">© 2023 Krishna Biswakarma. All rights reserved.</p>
-        </div>
+    <footer>
+      <p>© 2025 Krishna Biswakarma | All Rights Reserved</p>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
+    <!-- Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-sm');
-            } else {
-                navbar.classList.remove('shadow-sm');
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Animation on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.animate__animated');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (elementPosition < screenPosition) {
-                    const animationClass = element.classList[1];
-                    element.classList.add('animate__' + animationClass.split('__')[1]);
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-    </script>
-</body>
+    // AOS Init
+    AOS.init({ duration: 1200, once: true });
+
+    // Navbar scroll effect
+    window.addEventListener("scroll", function(){
+      const nav = document.querySelector("nav");
+      nav.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    // Dark/Light Mode
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      themeToggle.innerHTML = document.body.classList.contains("light-mode")
+        ? '<i class="bi bi-brightness-high"></i>'
+        : '<i class="bi bi-moon-stars"></i>';
+    });
+
+    // Typing Animation
+    new Typed(".typed-text", {
+      strings: ["I'm a Web Developer", "I'm a Designer", "I'm a Creator" , "I'm a mobile app Developer"],
+      typeSpeed: 80,
+      backSpeed: 40,
+      backDelay: 1500,
+      loop: true
+    });
+  </script>
+  </body>
 </html>
-
-
-
-
-
